@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="/src/assets/img/favicon.png" />
+    <link rel="stylesheet" href="/src/styles/common.scss" />
+</head>
+<body>
+    {% include '../components/header.twig' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include '../components/footer.twig' %}
+
+    <script type="module" src="/src/scripts/common.js"></script>
+</body>
+</html>
