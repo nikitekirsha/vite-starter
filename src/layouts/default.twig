@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" href="/src/assets/img/favicon.png" />
-    <link rel="stylesheet" href="/src/styles/common.scss" />
+    <link rel="stylesheet" href="/src/styles/index.scss" />
 </head>
 <body>
     {% include '../components/header.twig' %}
@@ -16,6 +16,6 @@
 
     {% include '../components/footer.twig' %}
 
-    <script type="module" src="/src/scripts/common.js"></script>
+    <script type="module" src="/src/scripts/app.ts"></script>
 </body>
 </html>

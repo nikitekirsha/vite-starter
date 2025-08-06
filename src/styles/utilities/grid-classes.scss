@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../mixins' as mixins;
+@use '../config/vars' as vars;
+
+@mixin grid-classes {
+	.#{ vars.$mixins-class-prefix }-container {
+		width: 100%;
+		max-width: vars.$grid-container-width;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: math.div(vars.$grid-gap, 2);
+		padding-right: math.div(vars.$grid-gap, 2);
+	}
+
+	.#{ vars.$mixins-class-prefix }-row {
+		display: grid;
+		grid-template-columns: repeat(#{ vars.$grid-columns }, 1fr);
+		gap: vars.$grid-gap;
+	}
+
+	@for $i from 1 through vars.$grid-columns {
+		.#{ vars.$mixins-class-prefix }-col-#{ $i } {
+			grid-column: span #{ $i };
+		}
+	}
+
+	@each $bp-name, $bp-size in vars.$breakpoints {
+		@include mixins.media-up($bp-name) {
+			@for $i from 1 through vars.$grid-columns {
+				.#{ vars.$mixins-class-prefix }-col-#{ $bp-name }-#{ $i } {
+					grid-column: span #{ $i };
+				}
+			}
+		}
+	}
+}

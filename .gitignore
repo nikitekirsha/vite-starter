@@ -1,4 +1,4 @@
-# Logs
+# logs
 logs
 *.log
 npm-debug.log*
@@ -13,11 +13,8 @@ dist-ssr
 *.local
 package-lock.json
 
-+.*
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# editor directories and files
+.vscode
 .idea
 .DS_Store
 *.suo

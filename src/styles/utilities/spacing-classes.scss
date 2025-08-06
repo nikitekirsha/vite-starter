@@ -1,0 +1,47 @@
+@use 'sass:map';
+
+@use '../helpers' as helpers;
+@use '../mixins' as mixins;
+@use '../config/vars' as vars;
+
+@mixin spacing-classes {
+	$map: helpers.get-spacing-map();
+	$directives: (
+		'': (''),
+		't': ('-top'),
+		'r': ('-right'),
+		'b': ('-bottom'),
+		'l': ('-left'),
+		'x': ('-left','-right'),
+		'y': ('-top','-bottom')
+	);
+
+	@each $property, $abbreviation in (padding: p, margin: m) {
+		$signs: if($property == margin, ('', '-'), (''));
+
+		@each $sign in $signs {
+			@each $directive, $sides in $directives {
+				@each $index, $value in $map {
+					$property-value: if($sign == '-', -$value, $value);
+					$base: if($sign=='-', '-#{ vars.$mixins-class-prefix }', vars.$mixins-class-prefix);
+
+					.#{ $base }-#{ $abbreviation }#{ $directive }-#{ $index } {
+						@each $side in $sides {
+							#{ $property }#{ $side }: $property-value !important;
+						}
+					}
+
+					@each $bp-name in map.keys(vars.$breakpoints) {
+						@include mixins.media-up($bp-name) {
+							.#{ $base }-#{ $abbreviation }#{ $directive }-#{ $bp-name }-#{ $index } {
+								@each $side in $sides {
+									#{ $property }#{ $side }: $property-value !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

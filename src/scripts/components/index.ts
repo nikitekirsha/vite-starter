@@ -1,0 +1,1 @@
+export { initHeader } from './header'

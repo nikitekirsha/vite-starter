@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@core/*": ["src/scripts/core/*"],
+			"@core": ["src/scripts/core"],
+
+			"@helpers/*": [ "src/scripts/helpers/*"],
+			"@helpers": ["src/scripts/helpers"],
+
+			"@components/*": [ "src/scripts/components/*"],
+			"@components": ["src/scripts/components"]
+		},
+		"strict": true
+	}
+}

@@ -1,0 +1,56 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+*:focus-visible {
+	outline: none;
+}
+
+input,
+textarea,
+select,
+button {
+	background-color: transparent;
+	font: inherit;
+	border: none;
+	outline: none;
+	color: inherit;
+}
+
+input,
+textarea {
+	min-width: 0;
+
+	&::placeholder {
+		font: inherit;
+		color: inherit;
+	}
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+ul, ol {
+	list-style-position: inside;
+}
+
+ul li {
+	list-style: none;
+}
+
+img, picture, video, canvas, svg {
+	display: block;
+	max-width: 100%;
+}

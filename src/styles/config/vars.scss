@@ -1,0 +1,17 @@
+$rem-size: 16px;
+
+$spacing-steps: 15;
+$spacing-increment: .5rem;
+
+$grid-container-width: 1200px;
+$grid-columns: 12;
+$grid-gap: 1rem;
+
+$breakpoints: (
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px
+);
+
+$mixins-class-prefix: 'vs'

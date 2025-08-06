@@ -1,0 +1,9 @@
+@mixin load-font($name, $weight, $style: 'normal') {
+	@font-face {
+		font-family: $name;
+		font-weight: $weight;
+		font-style: $style;
+		font-display: swap;
+		src: url('../assets/fonts/' + $name + '-' + $weight + '.woff2') format('woff2');
+	}
+}

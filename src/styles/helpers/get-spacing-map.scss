@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '../config/vars';
+
+@function get-spacing-map() {
+	$scale: ();
+
+	@for $i from 0 through vars.$spacing-steps {
+		$value: if(vars.$spacing-increment == 0, 0, $i * vars.$spacing-increment);
+		$scale: map.merge($scale, ($i: $value));
+	}
+
+	@return $scale;
+}
