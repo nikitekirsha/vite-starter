@@ -1,8 +1,0 @@
-@use 'mixins' as *;
-
-@include load-font('roboto', 400);
-@include load-font('roboto', 500);
-
-body {
-	font-family: 'roboto', system-ui, sans-serif;
-}
