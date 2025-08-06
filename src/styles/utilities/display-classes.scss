@@ -1,0 +1,22 @@
+@use '../config/vars' as vars;
+@use '../mixins' as mixins;
+
+@mixin display-classes {
+	$values: flex, inline-flex, block, inline-block, grid, inline-grid, inline, none;
+
+	@each $value in $values {
+		.#{ vars.$mixins-class-prefix }-display-#{ $value } {
+			display: $value !important;
+		}
+	}
+
+	@each $bp-name, $bp-size in vars.$breakpoints {
+		@include mixins.media-up($bp-name) {
+			@each $value in $values {
+				.#{ vars.$mixins-class-prefix }-display-#{ $bp-name }-#{ $value } {
+					display: $value !important;
+				}
+			}
+		}
+	}
+}
