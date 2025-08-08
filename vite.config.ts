@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 // @ts-ignore
 import vituum from 'vituum'
 import twig from '@vituum/vite-plugin-twig'
+import purgeCSS from 'vite-plugin-purgecss'
 import * as path from 'path'
 
 export default defineConfig({
@@ -21,6 +22,12 @@ export default defineConfig({
 		}),
 		twig({
 			root: './src'
+		}),
+		purgeCSS({
+			content: [
+				'./src/**/*.twig',
+				'./src/**/*.ts'
+			]
 		})
 	],
 	build: {
