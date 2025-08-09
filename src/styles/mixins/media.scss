@@ -8,7 +8,7 @@
 		@error 'unknown breakpoint `#{ $bp }`';
 	}
 
-	@media (max-width: $size - 1px) { @content; }
+	@media (max-width: $size) { @content; }
 }
 
 @mixin media-up($bp) {
@@ -18,16 +18,5 @@
 		@error 'unknown breakpoint `#{ $bp }`';
 	}
 
-	@media (min-width: $size) { @content; }
-}
-
-@mixin media-between($low, $high) {
-	$min: map.get(vars.$breakpoints, $low);
-	$max: map.get(vars.$breakpoints, $high);
-
-	@if $min == null or $max == null {
-		@error 'unknown breakpoints `#{ $low }` or `#{ $high }`';
-	}
-
-	@media (min-width: $min) and (max-width: $max - 1px) { @content; }
+	@media (min-width: $size + 1px) { @content; }
 }
