@@ -1,4 +1,4 @@
-@mixin load-font($name, $weight, $style: 'normal') {
+@mixin load-font($name, $weight, $style: normal) {
 	@font-face {
 		font-family: $name;
 		font-weight: $weight;
