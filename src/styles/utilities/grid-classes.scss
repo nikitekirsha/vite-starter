@@ -35,4 +35,20 @@
 			}
 		}
 	}
+
+	@for $i from 1 through vars.$grid-columns {
+		.#{ vars.$mixins-class-prefix }-col--order-#{ $i } {
+			order: #{ $i };
+		}
+	}
+
+	@each $bp-name, $bp-size in vars.$breakpoints {
+		@include mixins.media-up($bp-name) {
+			@for $i from 1 through vars.$grid-columns {
+				.#{ vars.$mixins-class-prefix }-col--order-#{ $bp-name }-#{ $i } {
+					order: #{ $i };
+				}
+			}
+		}
+	}
 }
