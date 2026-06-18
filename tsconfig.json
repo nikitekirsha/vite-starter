@@ -1,16 +1,12 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@core/*": ["src/scripts/core/*"],
-			"@core": ["src/scripts/core"],
-
-			"@helpers/*": [ "src/scripts/helpers/*"],
-			"@helpers": ["src/scripts/helpers"],
-
-			"@components/*": [ "src/scripts/components/*"],
-			"@components": ["src/scripts/components"]
-		},
-		"strict": true
-	}
+		"target": "ES2020",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"types": ["vite/client"],
+		"noEmit": true,
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts"]
 }
