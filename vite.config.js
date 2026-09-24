@@ -32,6 +32,10 @@ export default defineConfig({
 	base: './',
 	plugins: [
 		vituum({
+			input: [
+				'./src/styles/main.scss',
+				'./src/scripts/main.ts'
+			],
 			pages: {
 				normalizeBasePath: true
 			},
