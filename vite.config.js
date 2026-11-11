@@ -3,8 +3,12 @@ import { defineConfig } from 'vite'
 import vituum from 'vituum'
 import twig from '@vituum/vite-plugin-twig'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import { assetManifest } from './vite-plugins/asset-manifest.js'
 
 const srcDir = resolve(process.cwd(), 'src')
+const SCRIPT_ENTRY = './src/scripts/main.ts'
+const STYLE_ENTRY = './src/styles/main.scss'
+const SPRITE_FILE = './public/images/sprite.svg'
 const assetPathPattern = /(["'(=,\s])(?:\.\/|\/)(?=(?:css|js|assets|fonts|images)\/)/g
 
 function normalizeNestedPageAssets() {
@@ -33,8 +37,8 @@ export default defineConfig({
 	plugins: [
 		vituum({
 			input: [
-				'./src/styles/main.scss',
-				'./src/scripts/main.ts'
+				STYLE_ENTRY,
+				SCRIPT_ENTRY
 			],
 			pages: {
 				normalizeBasePath: true
@@ -70,7 +74,8 @@ export default defineConfig({
 				]
 			}
 		}),
-		normalizeNestedPageAssets()
+		normalizeNestedPageAssets(),
+		assetManifest({ script: SCRIPT_ENTRY, style: STYLE_ENTRY, sprite: SPRITE_FILE })
 	],
 	build: {
 		chunkSizeWarningLimit: 2048,
@@ -81,14 +86,14 @@ export default defineConfig({
 		},
 		rollupOptions: {
 			output: {
-				entryFileNames: 'js/[name].js',
-				chunkFileNames: 'js/[name].js',
+				entryFileNames: 'js/[name]-[hash].js',
+				chunkFileNames: 'js/[name]-[hash].js',
 				assetFileNames: (assetInfo) => {
 					const filename = assetInfo.names?.[0] ?? assetInfo.name ?? ''
 					const extension = filename.split('.').pop()
 
 					if (extension === 'css') {
-						return `css/${filename}`
+						return 'css/[name]-[hash][extname]'
 					}
 
 					if (extension === 'woff2' || extension === 'woff') {
