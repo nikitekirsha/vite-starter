@@ -51,9 +51,6 @@ export function assetManifest({ script, style, sprite }) {
 				: `export default ${JSON.stringify(`${base}${spritePublicName()}`)}`
 		},
 
-		// emitted early, so the image optimizer handles it like the plain copy from public.
-		// markup without the build (twig, cms templates) keeps that plain copy, the hashed one is for
-		// templates that read the manifest
 		buildStart() {
 			if (!isBuild) return
 
